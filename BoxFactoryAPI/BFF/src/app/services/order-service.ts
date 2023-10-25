@@ -8,7 +8,7 @@ import {Order, OrderCreateDto, ShippingStatusDto} from "../interfaces/order-inte
 })
 export class OrderService {
   orders: Order[] = [];
-  private apiUrl = 'http://localhost:5133/Order';
+  private apiUrl = 'https://box-factory.azurewebsites.net/Order';
 
   constructor(private http: HttpClient) {
     this.get();
@@ -66,7 +66,7 @@ export class OrderService {
   }
 
   public async getOrdersCountByMonth() : Promise<Map<number, number>> {
-    const call = this.http.get<{[key: number]: number }>("http://localhost:5133/stats");
+    const call = this.http.get<{[key: number]: number }>(`${this.apiUrl}/stats`);
     return new Map(Object.entries(await firstValueFrom(call)).map(([key, value]) => [parseInt(key), value]));
   }
 }

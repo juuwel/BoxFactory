@@ -11,7 +11,7 @@ export class BoxService {
   pageSize: string = "10";
   public pageCount?: number;
 
-  private apiUrl = 'http://localhost:5133/box';
+  private apiUrl = 'https://box-factory.azurewebsites.net/box';
 
   constructor(private http: HttpClient) {
     this.get(1,this.pageSize);
