@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {firstValueFrom} from 'rxjs';
 import {Order, OrderCreateDto, ShippingStatusDto} from "../interfaces/order-interface";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   orders: Order[] = [];
-  private apiUrl = 'http://localhost:5133/Order';
+  private apiUrl = environment.baseUrl + '/Order';
 
   constructor(private http: HttpClient) {
     this.get();
@@ -66,7 +67,7 @@ export class OrderService {
   }
 
   public async getOrdersCountByMonth() : Promise<Map<number, number>> {
-    const call = this.http.get<{[key: number]: number }>("http://localhost:5133/stats");
+    const call = this.http.get<{[key: number]: number }>(environment.baseUrl + "stats");
     return new Map(Object.entries(await firstValueFrom(call)).map(([key, value]) => [parseInt(key), value]));
   }
 }

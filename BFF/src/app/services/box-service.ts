@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {firstValueFrom, Observable} from 'rxjs';
 import {Box, BoxCreateDto, BoxUpdateDto, PaginatedBoxList} from "../interfaces/box-inteface";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class BoxService {
   pageSize: string = "10";
   public pageCount?: number;
 
-  private apiUrl = 'http://localhost:5133/box';
+  private apiUrl = environment.baseUrl + 'box';
 
   constructor(private http: HttpClient) {
     this.get(1,this.pageSize);
