@@ -9,6 +9,7 @@ import {positiveNumberValidator} from "../../positiveNumberValidator";
   selector: 'create-box',
   templateUrl: './createbox.component.html',
 })
+
 export class CreateboxComponent {
   box: BoxCreateDto;
   dimensionsDto: DimensionsDto;

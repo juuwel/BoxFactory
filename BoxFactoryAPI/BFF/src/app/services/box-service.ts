@@ -12,7 +12,7 @@ export class BoxService {
   pageSize: string = "10";
   public pageCount?: number;
 
-  private apiUrl = environment.baseUrl + 'box';
+  private apiUrl = environment.baseUrl + '/box';
 
   constructor(private http: HttpClient) {
     this.get(1,this.pageSize);

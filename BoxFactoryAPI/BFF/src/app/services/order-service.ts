@@ -9,7 +9,7 @@ import {environment} from "../../../environments/environment";
 })
 export class OrderService {
   orders: Order[] = [];
-  private apiUrl = environment.baseUrl + '/Order';
+  private apiUrl = environment.baseUrl + '/order';
 
   constructor(private http: HttpClient) {
     this.get();
